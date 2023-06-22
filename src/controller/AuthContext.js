@@ -4,10 +4,7 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation, CommonActions} from '@react-navigation/native';
 import {Center, Image} from 'native-base';
-import {
-  GoogleSignin,
-  statusCodes,
-} from '@react-native-google-signin/google-signin';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 const AuthContext = createContext();
 
@@ -41,6 +38,7 @@ const AuthProvider = ({children}) => {
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
+      setuserGoogle(userInfo);
       console.log(userInfo.user);
       const response = await axios.post(
         'https://kodingapp.refillaja.id/auth/google',
@@ -91,6 +89,9 @@ const AuthProvider = ({children}) => {
 
   const logout = async () => {
     try {
+      if (userGoogle) {
+        await GoogleSignin.signOut(); // Menambahkan pernyataan ini
+      }
       if (!user?.refreshToken) {
         throw new Error('Refresh token not found.');
       }
