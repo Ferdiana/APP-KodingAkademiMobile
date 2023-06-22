@@ -101,7 +101,10 @@ const HeaderHome = ({navigation, refreshing, onRefresh}) => {
               )}
             </Pressable>
           </HStack>
-          <Pressable onPress={() => navigation.navigate('QRDetail')}>
+          <Pressable
+            onPress={() =>
+              navigation.navigate('QRDetail', {expiredDate: expiredDate})
+            }>
             <HStack
               my={'12px'}
               bg={'neutral.50'}

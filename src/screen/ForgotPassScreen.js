@@ -34,7 +34,11 @@ const ForgotPassScreen = ({navigation}) => {
       }, 5000);
       setRefreshPage(!refreshPage);
     } catch (error) {
-      setErrorMsg('An error occurred. Please try again.');
+      if (error.response.data.message === 'Invalid email address') {
+        setErrorMsg('Email not registered');
+      } else {
+        setErrorMsg(error.response.data.message);
+      }
       setShowAlert(true);
       setTimeout(() => {
         setShowAlert(false);

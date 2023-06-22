@@ -7,10 +7,12 @@ import {
   ScrollView,
   Stack,
   Text,
+  FormControl,
 } from 'native-base';
 import React, {useEffect, useState} from 'react';
 import {FormRegister} from '../components';
 import {ImageBackground} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 function RegisterScreen({navigation}) {
   const [errorMsg, setErrorMsg] = useState('');
@@ -92,6 +94,7 @@ function RegisterScreen({navigation}) {
           keyboardShouldPersistTaps="handled"
           flex={1}>
           <FormRegister navigation={navigation} onError={handleError} />
+
           <HStack my={'16px'} justifyContent={'center'}>
             <Text fontSize={'xs'}>Already have an account? </Text>
             <Pressable onPress={() => navigation.replace('Login')}>

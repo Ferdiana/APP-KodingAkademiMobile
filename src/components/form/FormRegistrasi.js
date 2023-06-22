@@ -80,7 +80,7 @@ const FormRegister = ({onError, navigation}) => {
             onChangeText={setPhone_Number}
             placeholder={'Enter your phone number'}
           />
-          <Stack space={1}>
+          <Stack>
             <FormControl.Label>Password</FormControl.Label>
             <Input
               bgColor={'transparent'}
@@ -107,9 +107,12 @@ const FormRegister = ({onError, navigation}) => {
                 </Button>
               }
             />
+            <FormControl.HelperText>
+              Minimum 8 characters, letters & numbers.
+            </FormControl.HelperText>
           </Stack>
-          <Stack space={1}>
-            <FormControl.Label> Confirm Password</FormControl.Label>
+          <Stack>
+            <FormControl.Label>Confirm Password</FormControl.Label>
             <Input
               bgColor={'transparent'}
               borderColor={'neutral.100'}
@@ -135,6 +138,9 @@ const FormRegister = ({onError, navigation}) => {
                 </Button>
               }
             />
+            <FormControl.HelperText>
+              Both password must match.
+            </FormControl.HelperText>
           </Stack>
         </Stack>
         <Stack h={10} mt={5}>
@@ -143,7 +149,6 @@ const FormRegister = ({onError, navigation}) => {
             text={'Register'}
             padding={10}
             onPress={handleSubmit}
-            isLoading={isLoading}
           />
           {showAlert && (
             <AlertDialogg
